@@ -57,10 +57,10 @@ input[type="text"] {
 }
 
 .form-area input[type="email"]:focus,
-.form-area textarea:focus, 
+
 .form-area input[type="password"]:focus,
 input[type="email"]:focus,
-textarea:focus,
+
 input[type="password"]:focus {
   width: 280px;
   border-color: #B2FF00;
@@ -134,35 +134,55 @@ input[type="submit"]:hover {
 	padding:20px;
 }
 
-.container {
-    border: 1px solid #B2FF00;
-    background-color: black;
-    border-radius: 1.2em;
+
+table {
+  width: 100%;
+  margin: 20px auto;
+  table-layout: auto;
 }
 
-.roundedTable {
-    border-collapse: collapse;
-    border-radius: 1.2em;
-    overflow: hidden;
-    width: 100%;
-    margin: 0;
-}
-.roundedTable a {
-	margin:0;
+.fixed {
+  table-layout: fixed;
 }
 
-.roundedTable th,
-.roundedTable td {
-    padding: .6em;
-    background: black;
-    border-bottom: 1px solid #B2FF00;
+table,
+td,
+th {
+  border-collapse: collapse;
 }
 
-.roundedTable th {
-    text-align: left;
+table a {
+	margin:20px auto;
 }
 
-.roundedTable tr:last-child td {
-    border-bottom: none;
+th,
+td {
+  padding: 10px;
+  border: solid 1px;
+  text-align: center;
+  border-radius:24px;
 }
 
+.w {
+  width: 350px;
+}
+
+.full-container {
+	width:100%;
+	display:flex;
+}
+
+.full-container textarea {
+	margin:1.25em;
+	width:30%;
+	height:30vh;
+}
+.full-container .view {
+  margin-top:50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  
+}

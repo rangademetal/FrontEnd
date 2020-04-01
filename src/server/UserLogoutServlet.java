@@ -24,14 +24,7 @@ public class UserLogoutServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		PrintWriter out = res.getWriter();
 		HttpSession session = req.getSession();
-		
-		int id = (int)session.getAttribute("id");
-		String email = (String) session.getAttribute("email");
-		String password = (String) session.getAttribute("password");
-		String username = (String) session.getAttribute("username");
-		out.println("Session status");
-		out.println(id+", "+email+", "+password+", "+username);
-		
+				
 		session.removeAttribute("id");
 		session.removeAttribute("email");
 		session.removeAttribute("password");
