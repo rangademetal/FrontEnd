@@ -1,7 +1,7 @@
 package server;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +22,7 @@ public class UserLogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		PrintWriter out = res.getWriter();
+
 		HttpSession session = req.getSession();
 				
 		session.removeAttribute("id");

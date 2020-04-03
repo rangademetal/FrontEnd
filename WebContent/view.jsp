@@ -43,13 +43,13 @@
 				if(rs.next()) {
 					out.println(
 							"<div class='full-container'>"+
-								"<textarea>"+
+								"<textarea readonly>"+
 									rs.getString("html_code")+
 								"</textarea>"+
-								"<textarea>"+
+								"<textarea readonly>"+
 									rs.getString("css_code")+
 								"</textarea>"+
-								"<textarea>"+
+								"<textarea readonly>"+
 									rs.getString("js_code")+
 								"</textarea>"+
 							"</div>");

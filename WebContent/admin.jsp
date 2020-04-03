@@ -17,6 +17,7 @@
 	<nav>
 		<ul>
 			<li style="float:right"><a href="/FrontEnd/logout" >Logout</a></li>
+			<li><a href="/FrontEnd/profile">Profile</a>
 		</ul>
 		
 	</nav>
@@ -65,7 +66,7 @@
 								"<td>"+
 									rs.getString("FD.date_Create")+
 								"</td>"+
-								"<td><a href=view.jsp?id="+rs.getInt("id")+">View</a></td>"+
+								"<td><a href=view.jsp?id="+rs.getInt("id")+" target='_blank'>View</a></td>"+
 							"</tr>");	
 				}
 			}

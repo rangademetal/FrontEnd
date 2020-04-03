@@ -83,7 +83,7 @@ input[type="password"]:focus {
 }
 
 a {
-border: 0;
+  border: 0;
   background: none;
   display: block;
   margin: 20px 30px;
@@ -115,6 +115,29 @@ input[type="submit"]:hover {
   cursor: pointer;
   border-color: #B2FF00;
   color: #B2FF00;
+}
+
+.form-add {
+border: 2px solid #B2FF00;
+margin: 50px;
+border-radius: 24px;
+padding: 35px;
+}
+.form-add .form-add-description input[type="text"] {
+	width:800px;
+}
+.form-add input[type="text"]{
+	margin:20px auto;
+	
+}
+.form-add textarea {
+display: inline-flex;
+width: 29%;
+height: 30vh;
+margin: 1.25em;
+}
+.form-add input[type="submit"] {
+	width:100%;
 }
 
 
@@ -176,6 +199,13 @@ td {
 	margin:1.25em;
 	width:30%;
 	height:30vh;
+}
+.halfest-container {
+	margin: 1.25em;
+	width: 30%;
+	height: 30vh;
+	border:2px solid #B2FF00;
+	border-radius: 24px;
 }
 .full-container .view {
   margin-top:50px;
