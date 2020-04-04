@@ -8,6 +8,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+var request;
+function sendInfo()
+{
+var v=document.vinform.t1.value;
+var url="ajax.jsp?val="+v;
+
+if(window.XMLHttpRequest){
+request=new XMLHttpRequest();
+}
+else if(window.ActiveXObject){
+request=new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+try
+{
+request.onreadystatechange=getInfo;
+request.open("GET",url,true);
+request.send();
+}
+catch(e)
+{
+alert("Unable to connect to server");
+}
+}
+
+function getInfo(){
+if(request.readyState==4){
+var val=request.responseText;
+document.getElementById('amit').innerHTML=val;
+}
+}
+
+</script>
   <link rel="stylesheet" type="text/css" href="style.css">
   
 <meta charset="utf-8">
@@ -22,88 +56,14 @@
 		
 	</nav>
 	<div class="searchbar">
-		<form action="admin.jsp" class ="searchClass" method="get">
+		<form name="vinform" class ="searchClass" method="get">
 			<a href="addComponent.jsp">Add Component</a>
-			<input type="text" name="searchbar" placeholder="Search" />
-			<input type="submit" name="submitBtn" value="Search"/>
+			<input type="text" name="t1" onkeyup="sendInfo()">
 		</form>
 	</div>
 	<div class="container">
-	
-		<table class="roundedTable">
-			<tr>
-				<th>Title</th>
-				<th>Description</th>
-				<th>Autor</th>
-				<th>Date</th>
-				<th>Code</th>
-			</tr>
-			<%	
-			String search = (String)request.getParameter("searchbar");
-			
-			try{
-				String urlDb = "jdbc:mysql://localhost:3306/FrontEnd";
-				String usernameDb = "root";
-				String passwordDb="Sad1996.";
-				Class.forName("com.mysql.jdbc.Driver");
-				Connection con = DriverManager.getConnection(urlDb,usernameDb, passwordDb);
-				String sql = "Select * FROM FrontEnd WHERE description LIKE '"+search+"%'";
-				String sql2= "SELECT  FD.id as id ,FD.title AS tit, FD.description, root.username, FD.date_create FROM account root LEFT JOIN FrontEnd FD ON root.ID = FD.id_account where FD.Description like '"+search+"%'";
-				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery(sql2);
-				while(rs.next()) {
-					out.println(
-							"<tr>"+
-								"<td>"+
-									rs.getString("tit")+
-								"</td>"+
-								"<td>"+
-									rs.getString("FD.description")+
-								"</td>"+
-								"<td>"+
-									rs.getString("root.username")+
-								"</td>"+
-								"<td>"+
-									rs.getString("FD.date_Create")+
-								"</td>"+
-								"<td><a href=view.jsp?id="+rs.getInt("id")+" target='_blank'>View</a></td>"+
-							"</tr>");	
-				}
-			}
-			catch (Exception e) {
-				out.println(e.getMessage());
-			}
-		%>
-		</table>
+		<span id="amit"> </span>
 	</div>
 	
-	 <script>
-function showCustomer(str)
-{
-var xmlhttp;   
-if (str=="")
-  {
-  document.getElementById("txtHint").innerHTML="";
-  return;
-  }
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    document.getElementById("div1").innerHTML=xmlhttp.responseText;
-    }
-  }
-xmlhttp.open("GET","retrieve.jsp?search="+str,true);
-xmlhttp.send();
-}
-</script>
 	</body>
 </html>

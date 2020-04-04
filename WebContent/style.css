@@ -118,9 +118,8 @@ input[type="submit"]:hover {
 }
 
 .form-add {
-border: 2px solid #B2FF00;
+
 margin: 50px;
-border-radius: 24px;
 padding: 35px;
 }
 .form-add .form-add-description input[type="text"] {
@@ -147,7 +146,7 @@ margin: 1.25em;
 		
 }
 .searchbar input[type="text"] {
-	width:800px;
+	width:1000px;
 }
 .searchbar input[type="submit"] {
 	margin-left:20px;
