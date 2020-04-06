@@ -34,14 +34,12 @@ public class AddFrontEndServlet extends HttpServlet{
 		Date date = new Date();
 		System.out.println(dateFormat.format(date));
 		
-		
-		
 		try {
 			String urlDb = "jdbc:mysql://localhost:3306/FrontEnd";
 			String usernameDb = "root";
 			String passwordDb="Sad1996.";
-			String sql = "INSERT INTO FrontEnd (title, description, html_code, css_code, js_code, date_create, id_account)\n" + 
-					"values (?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO FrontEnd (title, description, html_code, date_create, id_account)\n" + 
+					"values (?,?,?,?,?)";
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(urlDb,usernameDb, passwordDb);
@@ -50,10 +48,8 @@ public class AddFrontEndServlet extends HttpServlet{
 			pst.setString(1, req.getParameter("title"));
 			pst.setString(2, req.getParameter("description"));
 			pst.setString(3, req.getParameter("html"));
-			pst.setString(4, req.getParameter("css"));
-			pst.setString(5, req.getParameter("js"));
-			pst.setString(6, dateFormat.format(date));
-			pst.setInt(7, id);
+			pst.setString(4, dateFormat.format(date));
+			pst.setInt(5, id);
 			
 			pst.executeUpdate();
 			

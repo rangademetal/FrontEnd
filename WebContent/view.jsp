@@ -34,7 +34,7 @@
 				String passwordDb="Sad1996.";
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection con = DriverManager.getConnection(urlDb,usernameDb, passwordDb);
-				String sql = "SELECT html_code, css_code, js_code from FrontEnd where id=?";
+				String sql = "SELECT html_code from FrontEnd where id=?";
 				PreparedStatement pst = con.prepareStatement(sql);
 				
 				pst.setInt(1,id);
@@ -45,22 +45,10 @@
 							"<div class='full-container'>"+
 								"<textarea readonly>"+
 									rs.getString("html_code")+
-								"</textarea>"+
-								"<textarea readonly>"+
-									rs.getString("css_code")+
-								"</textarea>"+
-								"<textarea readonly>"+
-									rs.getString("js_code")+
-								"</textarea>"+
-							"</div>");
-					out.println(
-							"<div class='full-container'>"+
+								"</textarea>"+	
 								"<div class='view'>"+
-										rs.getString("html_code")+
-										"<style>"+
-											rs.getString("css_code")+
-										"</style>"+
-								"</div>"+
+									rs.getString("html_code")+
+								"</div>"+			
 							"</div>");
 				}
 			}
