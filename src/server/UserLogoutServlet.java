@@ -25,10 +25,7 @@ public class UserLogoutServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 				
-		session.removeAttribute("id");
-		session.removeAttribute("email");
-		session.removeAttribute("password");
-		session.removeAttribute("username");
+		session.invalidate();
 
 		RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 		rd.forward(req, res);

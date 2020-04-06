@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@page import="java.sql.*" %>
     
 
 <!DOCTYPE html>
@@ -15,13 +16,31 @@
 			<li style="float:right"><a href="/FrontEnd/logout" >Logout</a></li>
 		</ul>
 	</nav>
+	<%@ page import="server.User" %>
 	<%
-		int id =(int) session.getAttribute("id");
-		out.println(id);
+		User user = (User)session.getAttribute("user");
+
+		int id = user.getId();
+		String urlDb = "jdbc:mysql://localhost:3306/FrontEnd";
+		String usernameDb = "root";
+		String passwordDb="Sad1996.";
 		
 		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			String sql = "SELECT COUNT(id) AS Count FROM FrontEnd where id_account=?";
+			Connection con = DriverManager.getConnection(urlDb,usernameDb, passwordDb);
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, id);
 			
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+				out.println("You created "+rs.getInt("Count")+" components");
+			}
+			pst.close();
+			con.close();
+		
 		}
+		
 		catch(Exception e) {
 			
 		}

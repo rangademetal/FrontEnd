@@ -56,11 +56,8 @@ public class UserLoginServlet extends HttpServlet {
 				user.setId(rs.getInt("id"));
 				
 				HttpSession session = req.getSession();
-				session.setAttribute("username", user.getName());
-				session.setAttribute("email", user.getEmail());
-				session.setAttribute("id", user.getId());
-				session.setAttribute("password", user.getPassword());
-				
+
+				session.setAttribute("user", user);
 				RequestDispatcher rd = req.getServletContext().getRequestDispatcher("/admin.jsp");
 				rd.forward(req, res);
 			}

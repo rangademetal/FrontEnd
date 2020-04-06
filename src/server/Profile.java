@@ -15,6 +15,8 @@ public class Profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		
 		String url = "/profile.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(url);
 		rd.forward(req,res);

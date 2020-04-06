@@ -28,13 +28,13 @@ public class AddFrontEndServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse res ) throws IOException {
 		HttpSession session = req.getSession();
 		PrintWriter out = res.getWriter();
-		
-		
+		User user = (User) session.getAttribute("user");
+		int id = user.getId();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		System.out.println(dateFormat.format(date));
 		
-		int id = (int)session.getAttribute("id");
+		
 		
 		try {
 			String urlDb = "jdbc:mysql://localhost:3306/FrontEnd";
